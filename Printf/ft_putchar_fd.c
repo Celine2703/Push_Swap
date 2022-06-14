@@ -1,35 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_sort.c                                          :+:      :+:    :+:   */
+/*   ft_putchar_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cmartin- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/13 14:08:44 by cmartin-          #+#    #+#             */
-/*   Updated: 2022/06/13 14:08:48 by cmartin-         ###   ########.fr       */
+/*   Created: 2022/05/03 16:24:01 by cmartin-          #+#    #+#             */
+/*   Updated: 2022/05/03 16:24:03 by cmartin-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push.h"
+#include "ft_printf.h"
 
-void	ft_sort_three(t_stack *stack)
+void	ft_putchar_fd(char c, int fd)
 {
-	while (stack ->head && !(ft_verif(stack)))
-	{
-		if (stack ->head ->pos == 3)
-		{
-			ft_r(stack, 'a');
-			ft_put_pos(stack);
-		}
-		if (stack ->head ->next ->pos == 3)
-		{
-			ft_reverse(stack, 'a');
-			ft_put_pos(stack);
-		}
-		if (stack ->head ->next ->pos == 1)
-		{
-			ft_s(stack, 'a');
-			ft_put_pos(stack);
-		}
-	}
+	write(fd, &c, 1);
 }

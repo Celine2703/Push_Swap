@@ -26,7 +26,7 @@ void	ft_affiche(t_stack *stack)
 	list = stack ->head;
 	while (list)
 	{
-		ft_putnbr_fd(list ->content, 1);
+		ft_putnbr_fd(list ->pos, 1);
 		write(1, "\n", 1);
 		list = list ->next;
 	}
@@ -57,7 +57,12 @@ int	main(int argc, char **argv)
 			ft_push(ft_lstnew(ft_atoi(argv[argc])), &stack);
 	if (stack.size <= 1)
 		return (0);
-	ft_affiche(&stack);
+	ft_put_pos(&stack);
+	if (!ft_verif(&stack))
+	{
+		ft_sort_three(&stack);
+		//ft_affiche(&stack);
+	}
 }
 
 //write(2, "Error\n", 6);

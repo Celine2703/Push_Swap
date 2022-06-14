@@ -45,6 +45,7 @@ t_list	*ft_lstnew(int content)
 		return (0);
 	elem ->content = content;
 	elem ->next = 0;
+	elem ->pos = -1;
 	return (elem);
 }
 

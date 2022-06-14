@@ -12,7 +12,7 @@
 
 #include "push.h"
 
-void	ft_push(t_list *new, t_stack *stack) //rajoute un elem dessus stack
+void	ft_push(t_list *new, t_stack *stack)
 {
 	if (!stack || !new)
 		return ;
@@ -21,7 +21,7 @@ void	ft_push(t_list *new, t_stack *stack) //rajoute un elem dessus stack
 	stack ->size += 1;
 }
 
-t_list	*ft_pop(t_stack *stack) //retire elem dessus stack
+t_list	*ft_pop(t_stack *stack)
 {
 	t_list	*temp;
 
@@ -31,7 +31,7 @@ t_list	*ft_pop(t_stack *stack) //retire elem dessus stack
 	return (temp);
 }
 
-void	ft_s(t_stack *stack) //inverse 2 premiers elems stack
+void	ft_s(t_stack *stack, char c)
 {
 	t_list	*temp1;
 	t_list	*temp2;
@@ -43,15 +43,18 @@ void	ft_s(t_stack *stack) //inverse 2 premiers elems stack
 	temp2 = stack ->head ->next;
 	stack ->head ->next = temp1;
 	temp1 ->next = temp2;
+	ft_printf("s%c\n", c);
 }
 
-void	ft_ss(t_stack *stack_a, t_stack *stack_b) //swap ds les 2 stacks
+void	ft_ss(t_stack *stack_a, t_stack *stack_b)
 {
-	ft_s(stack_a);
-	ft_s(stack_b);
+	ft_s(stack_a, 'a');
+	ft_s(stack_b, 'b');
+	ft_printf("ss\n");
 }
 
-void	ft_p(t_stack *stack1, t_stack *stack2) //push elem d une stack ds l autre
+void	ft_p(t_stack *stack1, t_stack *stack2, char c)
 {
 	ft_push(ft_pop(stack1), stack2);
+	ft_printf("p%c\n", c);
 }

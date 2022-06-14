@@ -15,10 +15,12 @@
 
 # include <stdlib.h>
 # include <unistd.h>
+# include "./Printf/ft_printf.h"
 
 typedef struct s_list
 {
 	int				content;
+	int				pos;
 	struct s_list	*next;
 }	t_list;
 
@@ -34,14 +36,22 @@ t_list	*ft_lstnew(int content);
 int		ft_atoi(const char *str);
 char	**ft_split(char const *str, char const c);
 
+//operations
 void	ft_push(t_list *new, t_stack *stack);
 t_list	*ft_pop(t_stack *stack);
-void	ft_s(t_stack *stack);
+void	ft_s(t_stack *stack, char c);
 void	ft_ss(t_stack *stack_a, t_stack *stack_b);
-void	ft_p(t_stack *stack1, t_stack *stack2);
-void	ft_r(t_stack *stack);
-void	ft_rr(t_stack *stack_a, t_stack *stack_b);
-void	ft_reverse(t_stack *stack);
-void	ft_rrr(t_stack *stack_a, t_stack *stack_b);
+void	ft_p(t_stack *stack1, t_stack *stack2, char c);
 
+void	ft_r(t_stack *stack, char c);
+void	ft_rr(t_stack *stack_a, t_stack *stack_b);
+void	ft_reverse(t_stack *stack, char c);
+void	ft_rrr(t_stack *stack_a, t_stack *stack_b);
+int		ft_pos(t_stack *stack, t_list *elem);
+
+void	ft_put_pos(t_stack *stack);
+int		ft_verif(t_stack *stack);
+
+//sort
+void	ft_sort_three(t_stack *stack);
 #endif

@@ -1,4 +1,4 @@
-SRCS = 
+SRCS = ft_atoi.c ft_sort.c ft_split.c ft_utiles.c operations.c operations_bis.c operations_ter.c recup.c
 
 OBJS = $(SRCS:%.c=%.o)
 
@@ -11,15 +11,18 @@ HEAD = push.h
 all: $(NAME)
 
 clean:
-	rm -f $(OBJS) $(OBJSBONUS)
+	make -C ./Printf clean
+	rm -f $(OBJS)
 
 fclean: clean
+	make -C ./Printf fclean
 	rm -f $(NAME)
 
 re: fclean
 	make all
 
 $(NAME): $(OBJS) $(HEAD)
-	$(CC) -c $< -Iincludes -o $@
+	make -C ./Printf
+	$(CC) $(SRCS) -Iincludes ./Printf/libftprintf.a -o $@
 
 .PHONY: all clean fclean re
