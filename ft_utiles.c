@@ -46,13 +46,6 @@ t_list	*ft_lstnew(int content)
 	elem ->content = content;
 	elem ->next = 0;
 	elem ->pos = -1;
+	ft_init_mov(&(elem ->mov));
 	return (elem);
-}
-
-void	ft_lstdelone(t_list *lst)
-{
-	if (!lst)
-		return ;
-	lst ->content = 0;
-	free(lst);
 }
