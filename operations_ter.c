@@ -35,26 +35,42 @@ void	ft_init_mov(t_mov *elem)
 	elem ->tot = 0;
 }
 
-void	ft_mov_b(t_stack *stack, t_list *elem, size_t pos)
+int	ft_min(t_stack *stack)
 {
+	int	min;
+	t_list	*list;
 
-	if (pos >= (stack ->size) / 2)
-		elem ->mov.rrb = pos - ((stack ->size) / 2);
-	elem ->mov.rb = pos;
+	list = stack ->head;
+	min = list ->content;
+	while (list)
+	{
+		if (list ->content < min)
+			min = list ->content;
+		list = list ->next;
+	}
+	return (min);
 }
 
-int	ft_mov_a(t_stack *stack, t_list *elem)
+void	ft_mov_b(t_stack *stack, t_list *elem, size_t pos)
+{
+	if (pos > (stack ->size) / 2)
+		elem ->mov.rrb = (stack ->size) - pos;
+	else
+		elem ->mov.rb = pos;
+}
+
+void	ft_mov_a(t_stack *stack, t_list *elem)
 {
 	int		cpt;
 	int		max;
 	t_list	*list;
-	
+
 	list = stack ->head;
 	max = list ->content;
 	cpt = 0;
 	while (list)
 	{
-		if (list ->content < max && list ->content > elem ->content)
+		if (list ->content > elem ->content && (list ->content < max || max < elem ->content))
 		{
 			max = list ->content;
 			elem ->mov.ra = cpt;
@@ -62,64 +78,30 @@ int	ft_mov_a(t_stack *stack, t_list *elem)
 		list = list ->next;
 		cpt ++;
 	}
-	if (elem ->mov.ra >= (stack ->size) / 2)
+	//if (elem ->content > max)
+		//elem ->mov.ra = ft_min(stack);
+	if ((size_t)(elem ->mov.ra) > (stack ->size) / 2)
 	{
-		elem ->mov.rra = elem ->mov.ra - ((stack ->size) / 2);
+		elem ->mov.rra = (stack ->size) - elem ->mov.ra;
 		elem ->mov.ra = 0;
-		return (elem ->mov.rra);
-	}
-	return (elem ->mov.ra);
-
-int	ft_mov_a(t_stack *stack, t_list *elem)
-{
-	size_t	pos;
-
-	pos = ft_pos(stack, elem);
-	if (pos <= (stack ->size) / 2)
-	{
-		while (pos != 0)
-		{
-			elem ->mov.ra ++;
-			pos --;
-		}
-		return (elem ->mov.ra);
-	}
-	else
-	{
-		while (pos != 0)
-		{
-			elem ->mov.rra ++;
-			pos --;
-		}
-		return (elem ->mov.rra);
 	}
 }
 
-void	ft_put_mov(t_stack *stackb, t_stack *stacka)
+void	ft_mov_rr(t_list *elem)
 {
-	t_list	*list;
-	int		cpt;
-
-	list = stackb ->head;
-	cpt = 0;
-	while (list)
+	if (elem ->mov.ra && elem ->mov.rb)
 	{
-		list ->mov = ft_mov_b(stackb, list, cpt) + ft_mov_a() + 1;
-		list = list ->next;
-		cpt ++;
+		if (elem ->mov.ra >= elem ->mov.rb)
+		{
+			elem ->mov.ra = elem ->mov.ra - elem ->mov.rb;
+			elem ->mov.rr = elem ->mov.rb;
+			elem ->mov.rb = 0;
+		}
+		else
+		{
+			elem ->mov.rb = elem ->mov.rb - elem ->mov.ra;
+			elem ->mov.rr = elem ->mov.ra;
+			elem ->mov.ra = 0;
+		}
 	}
-}
-
-int	ft_verif(t_stack *stack)
-{
-	t_list	*list;
-
-	list = stack ->head;
-	while (list && list ->next)
-	{
-		if (list ->pos > list -> next ->pos)
-			return (0);
-		list = list ->next;
-	}
-	return (1);
 }

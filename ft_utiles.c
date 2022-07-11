@@ -49,3 +49,17 @@ t_list	*ft_lstnew(int content)
 	ft_init_mov(&(elem ->mov));
 	return (elem);
 }
+
+int	ft_verif(t_stack *stack)
+{
+	t_list	*list;
+
+	list = stack ->head;
+	while (list && list ->next)
+	{
+		if (list ->pos > list -> next ->pos)
+			return (0);
+		list = list ->next;
+	}
+	return (1);
+}

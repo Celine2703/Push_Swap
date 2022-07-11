@@ -1,8 +1,8 @@
-SRCS = ft_atoi.c ft_sort.c ft_split.c ft_utiles.c operations.c operations_bis.c operations_ter.c recup.c
+SRCS = ft_atoi.c ft_sort.c ft_split.c ft_utiles.c operations.c operations_bis.c operations_ter.c operations_qtre.c recup.c
 
 OBJS = $(SRCS:%.c=%.o)
 
-CC   = gcc -Wall -Wextra -Werror
+CC   = gcc -g3 -Wall -Wextra -Werror
 
 NAME = push_swap
 

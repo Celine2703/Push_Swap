@@ -16,7 +16,6 @@ Errors include for example: some arguments
 aren’t integers, some arguments are
 bigger than an integer and/or there are duplicates*/
 
-#include <stdio.h>
 #include "push.h"
 
 void	ft_affiche(t_stack *stack)
@@ -26,10 +25,29 @@ void	ft_affiche(t_stack *stack)
 	list = stack ->head;
 	while (list)
 	{
-		ft_putnbr_fd(list ->pos, 1);
+		ft_putnbr_fd(list ->content, 1);
 		write(1, "\n", 1);
 		list = list ->next;
 	}
+	write(1, "\n", 1);
+}
+
+void	ft_affiche_mov(t_list	*list)
+{
+	ft_putnbr_fd(list ->mov.ra, 1);
+	write(1, "\n", 1);
+	ft_putnbr_fd(list ->mov.rb, 1);
+	write(1, "\n", 1);
+	ft_putnbr_fd(list ->mov.rr, 1);
+	write(1, "\n", 1);
+	ft_putnbr_fd(list ->mov.rra, 1);
+	write(1, "\n", 1);
+	ft_putnbr_fd(list ->mov.rrb, 1);
+	write(1, "\n", 1);
+	ft_putnbr_fd(list ->mov.rrr, 1);
+	write(1, "\n", 1);
+	ft_putnbr_fd(list ->mov.tot, 1);
+	write(1, "\n\n", 2);
 }
 
 int	main(int argc, char **argv)
@@ -60,7 +78,7 @@ int	main(int argc, char **argv)
 	ft_put_pos(&stack);
 	if (!ft_verif(&stack))
 	{
-		ft_sort_three(&stack);
+		ft_sort(&stack);
 		//ft_affiche(&stack);
 	}
 }

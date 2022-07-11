@@ -22,6 +22,7 @@ void	ft_r(t_stack *stack, char c)
 	while (list ->next)
 		list = list ->next;
 	list ->next = ft_pop(stack);
+	stack ->size ++;
 	list ->next ->next = NULL;
 	ft_printf("r%c\n", c);
 }
