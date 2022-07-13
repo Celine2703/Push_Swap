@@ -38,17 +38,25 @@ void	ft_init_mov(t_mov *elem)
 int	ft_min(t_stack *stack)
 {
 	int	min;
+	int	cpt;
+	int	ra;
 	t_list	*list;
 
 	list = stack ->head;
 	min = list ->content;
+	cpt = 0;
+	ra = 0;
 	while (list)
 	{
 		if (list ->content < min)
+		{
 			min = list ->content;
+			ra = cpt;
+		}
 		list = list ->next;
+		cpt ++;
 	}
-	return (min);
+	return (ra);
 }
 
 void	ft_mov_b(t_stack *stack, t_list *elem, size_t pos)
@@ -78,8 +86,8 @@ void	ft_mov_a(t_stack *stack, t_list *elem)
 		list = list ->next;
 		cpt ++;
 	}
-	//if (elem ->content > max)
-		//elem ->mov.ra = ft_min(stack);
+	if (elem ->content > max)
+		elem ->mov.ra = ft_min(stack);
 	if ((size_t)(elem ->mov.ra) > (stack ->size) / 2)
 	{
 		elem ->mov.rra = (stack ->size) - elem ->mov.ra;

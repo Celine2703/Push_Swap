@@ -25,7 +25,7 @@ void	ft_affiche(t_stack *stack)
 	list = stack ->head;
 	while (list)
 	{
-		ft_putnbr_fd(list ->content, 1);
+		ft_putnbr_fd(list ->pos, 1);
 		write(1, "\n", 1);
 		list = list ->next;
 	}
@@ -82,5 +82,24 @@ int	main(int argc, char **argv)
 		//ft_affiche(&stack);
 	}
 }
+
+/*int main(int argc, char **argv)
+{
+	t_stack	stack;
+	int i;
+	char	**str;
+	
+	stack.head = 0;
+	stack.size = 0;
+	(void)(argc);
+	str = ft_split(argv[1], ' ');
+	i = 0;
+	while (str[i])
+		i++;
+	i--;
+	while (i >= 0)
+		ft_push(ft_lstnew(ft_atoi(str[i--])), &stack);
+	printf("%i\n\n", ft_min(&stack));
+}*/
 
 //write(2, "Error\n", 6);

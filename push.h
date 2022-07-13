@@ -77,6 +77,7 @@ void	ft_mov_add(t_stack *stackb, t_stack *stacka, t_list *elem, int cpt);
 void	ft_put_mov(t_stack *stackb, t_stack *stacka);
 t_list	*ft_pick(t_stack *stack);
 void	ft_insert(t_stack *stacka, t_stack *stackb, t_list *elem);
+void	ft_rotate(t_stack *stack);
 
 //sort
 void	ft_sort(t_stack *stack);

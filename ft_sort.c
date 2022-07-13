@@ -55,5 +55,6 @@ void	ft_sort_many(t_stack *stacka)
 		ft_put_mov(&stackb, stacka);
 		ft_insert(stacka, &stackb, ft_pick(&stackb));
 	}
-	ft_affiche(stacka);
+	ft_rotate(stacka);
+	//ft_affiche(stacka);
 }

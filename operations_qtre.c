@@ -90,10 +90,26 @@ void	ft_insert(t_stack *stacka, t_stack *stackb, t_list *elem)
 	while ((elem ->mov.rrb)--)
 		ft_reverse(stackb, 'b');
 	while ((elem ->mov.ra)--)
-	{
 		ft_r(stacka, 'a');
-	}
 	while ((elem ->mov.rra)--)
 		ft_reverse(stacka, 'a');
 	ft_p(stackb, stacka, 'a');
+}
+
+void	ft_rotate(t_stack *stack)
+{
+	int	ra;
+	int	rra;
+	
+	ra = ft_min(stack);
+	rra = 0;
+	if (ra > (int)((stack ->size) / 2))
+	{
+		rra = (stack ->size) - ra;
+		ra = 0;
+	}
+	while (ra--)
+		ft_r(stack, 'a');
+	while (rra--)
+		ft_reverse(stack, 'a');
 }
