@@ -24,13 +24,14 @@ void	ft_r(t_stack *stack, char c)
 	list ->next = ft_pop(stack);
 	stack ->size ++;
 	list ->next ->next = NULL;
-	ft_printf("r%c\n", c);
+	if (c)
+		ft_printf("r%c\n", c);
 }
 
 void	ft_rr(t_stack *stack_a, t_stack *stack_b)
 {
-	ft_r(stack_a, 'a');
-	ft_r(stack_b, 'b');
+	ft_r(stack_a, 0);
+	ft_r(stack_b, 0);
 	ft_printf("rr\n");
 }
 
@@ -46,12 +47,13 @@ void	ft_reverse(t_stack *stack, char c)
 	list ->next ->next = stack ->head;
 	stack ->head = list ->next;
 	list ->next = NULL;
-	ft_printf("rr%c\n", c);
+	if (c)
+		ft_printf("rr%c\n", c);
 }
 
 void	ft_rrr(t_stack *stack_a, t_stack *stack_b)
 {
-	ft_reverse(stack_a, 'a');
-	ft_reverse(stack_b, 'b');
+	ft_reverse(stack_a, 0);
+	ft_reverse(stack_b, 0);
 	ft_printf("rrr\n");
 }

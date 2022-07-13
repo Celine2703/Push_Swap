@@ -31,15 +31,9 @@ t_list	*ft_pick(t_stack *stack)
 void	ft_insert(t_stack *stacka, t_stack *stackb, t_list *elem)
 {
 	while ((elem ->mov.rr)--)
-	{
-		ft_r(stackb, 'b');
-		ft_r(stacka, 'a');
-	}
+		ft_rr(stacka, stackb);
 	while ((elem ->mov.rrr)--)
-	{
-		ft_reverse(stackb, 'b');
-		ft_reverse(stacka, 'a');
-	}
+		ft_rrr(stacka, stackb);
 	while ((elem ->mov.rb)--)
 		ft_r(stackb, 'b');
 	while ((elem ->mov.rrb)--)
