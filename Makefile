@@ -1,4 +1,4 @@
-SRCS = ft_atoi.c ft_sort.c ft_split.c ft_utiles.c operations.c operations_bis.c operations_ter.c operations_qtre.c recup.c
+SRCS = ft_atoi.c ft_sort.c ft_split.c ft_utiles.c operations.c operations_bis.c mov.c mov_bis.c recup.c pos.c insert_sort.c
 
 OBJS = $(SRCS:%.c=%.o)
 

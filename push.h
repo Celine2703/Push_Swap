@@ -63,11 +63,14 @@ void	ft_r(t_stack *stack, char c);
 void	ft_rr(t_stack *stack_a, t_stack *stack_b);
 void	ft_reverse(t_stack *stack, char c);
 void	ft_rrr(t_stack *stack_a, t_stack *stack_b);
-int		ft_pos(t_stack *stack, t_list *elem);
 
+//pos
+int		ft_pos(t_stack *stack, t_list *elem);
 void	ft_put_pos(t_stack *stack);
-void	ft_init_mov(t_mov *elem);
+
+//mov
 int		ft_min(t_stack *stack);
+void	ft_init_mov(t_mov *elem);
 void	ft_mov_b(t_stack *stack, t_list *elem, size_t pos);
 void	ft_mov_a(t_stack *stack, t_list *elem);
 void	ft_mov_rr(t_list *elem);
@@ -75,6 +78,8 @@ void	ft_mov_rr(t_list *elem);
 void	ft_mov_rrr(t_list *elem);
 void	ft_mov_add(t_stack *stackb, t_stack *stacka, t_list *elem, int cpt);
 void	ft_put_mov(t_stack *stackb, t_stack *stacka);
+
+//insert_sort
 t_list	*ft_pick(t_stack *stack);
 void	ft_insert(t_stack *stacka, t_stack *stackb, t_list *elem);
 void	ft_rotate(t_stack *stack);
