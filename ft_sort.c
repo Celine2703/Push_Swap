@@ -16,12 +16,15 @@ void	ft_sort(t_stack *stack)
 {
 	if (stack ->size == 3)
 		ft_sort_three(stack);
-	else if (stack ->size > 3)
+	else if (stack ->size < 20)
+		ft_sort_few(stack);
+	else
 		ft_sort_many(stack);
 }
 
 void	ft_sort_three(t_stack *stack)
 {
+	ft_put_pos(stack);
 	while (stack ->head && !(ft_verif(stack)))
 	{
 		if (stack ->head ->pos == 3)
@@ -42,6 +45,22 @@ void	ft_sort_three(t_stack *stack)
 	}
 }
 
+void	ft_sort_few(t_stack	*stacka)
+{
+	t_stack	stackb;
+
+	stackb.head = 0;
+	stackb.size = 0;
+	while (stacka ->size > 3)
+	{
+		ft_rotate(stacka);
+		ft_p(stacka, &stackb, 'b');
+	}
+	ft_sort_three(stacka);
+	while (stackb.size)
+		ft_p(&stackb, stacka, 'a');
+}	
+
 void	ft_sort_many(t_stack *stacka)
 {
 	t_stack	stackb;
@@ -56,4 +75,16 @@ void	ft_sort_many(t_stack *stacka)
 		ft_insert(stacka, &stackb, ft_pick(&stackb));
 	}
 	ft_rotate(stacka);
+}
+
+void	ft_recup(char **str, t_stack *stack)
+{
+	int	i;
+	
+	i = 0;
+	while (str[i])
+		i++;
+	i--;
+	while (i >= 0)
+		ft_push(ft_lstnew(ft_atoi(str[i--])), stack);
 }

@@ -53,23 +53,13 @@ void	ft_affiche_mov(t_list	*list)
 int	main(int argc, char **argv)
 {
 	t_stack	stack;
-	char	**str;
-	int		i;
 
 	stack.head = 0;
 	stack.size = 0;
-	if (argc == 1)
+	if (argc <= 1)
 		return (0);
-	if (argc == 2)
-	{
-		str = ft_split(argv[1], ' ');
-		i = 0;
-		while (str[i])
-			i++;
-		i--;
-		while (i >= 0)
-			ft_push(ft_lstnew(ft_atoi(str[i--])), &stack);
-	}
+	else if (argc == 2)
+		ft_recup(ft_split(argv[1], ' '), &stack);
 	else
 		while (argc-- > 1)
 			ft_push(ft_lstnew(ft_atoi(argv[argc])), &stack);
@@ -77,29 +67,7 @@ int	main(int argc, char **argv)
 		return (0);
 	ft_put_pos(&stack);
 	if (!ft_verif(&stack))
-	{
 		ft_sort(&stack);
-		//ft_affiche(&stack);
-	}
 }
-
-/*int main(int argc, char **argv)
-{
-	t_stack	stack;
-	int i;
-	char	**str;
-	
-	stack.head = 0;
-	stack.size = 0;
-	(void)(argc);
-	str = ft_split(argv[1], ' ');
-	i = 0;
-	while (str[i])
-		i++;
-	i--;
-	while (i >= 0)
-		ft_push(ft_lstnew(ft_atoi(str[i--])), &stack);
-	printf("%i\n\n", ft_min(&stack));
-}*/
 
 //write(2, "Error\n", 6);
