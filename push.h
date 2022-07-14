@@ -56,6 +56,8 @@ char	*ft_itoa(int n);
 char	**ft_split(char const *str, char const c);
 
 //error
+int		ft_strcmp(const char *s1, const char *s2);
+char	*ft_trans(char *str);
 int		ft_dup(t_stack *stack, char *str);
 int		ft_char(char *str, t_stack *stack);
 int		ft_int(char *str, t_stack *stack);
