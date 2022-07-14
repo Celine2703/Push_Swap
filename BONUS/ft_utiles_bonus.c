@@ -34,6 +34,22 @@ t_list	*ft_lstnew(int content)
 	return (elem);
 }
 
+void	ft_lstclear(t_stack *stack)
+{
+	t_list	*temp;
+
+	if (!stack)
+		return ;
+	while (stack ->head)
+	{
+		temp = stack ->head ->next;
+		stack ->head ->content = 0;
+		stack ->head ->next = 0;
+		free(stack ->head);
+		stack ->head = temp;
+	}
+}
+
 int	ft_verif(t_stack *stack)
 {
 	t_list	*list;

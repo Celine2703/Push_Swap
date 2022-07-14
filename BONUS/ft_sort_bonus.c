@@ -12,44 +12,6 @@
 
 #include "push_bonus.h"
 
-void	ft_putchar_fd(char c, int fd)
-{
-	write(fd, &c, 1);
-}
-
-void	ft_putnbr_fd(int n, int fd)
-{
-	long int	nb;
-
-	nb = n;
-	if (nb < 0)
-	{
-		write(fd, "-", 1);
-		nb = nb * -1;
-	}
-	if (nb > 9)
-	{
-		ft_putnbr_fd(nb / 10, fd);
-		nb = nb % 10;
-	}
-	if ((nb >= 0) && (nb <= 9))
-		ft_putchar_fd(nb + 48, fd);
-}
-
-void	ft_affiche(t_stack *stack)
-{
-	t_list	*list;
-
-	list = stack ->head;
-	while (list)
-	{
-		ft_putnbr_fd(list ->content, 1);
-		write(1, "\n", 1);
-		list = list ->next;
-	}
-	write(1, "\n", 1);
-}
-
 void	ft_do(char *str, t_stack *stacka, t_stack *stackb)
 {
 	if (!ft_strcmp(str, "sa\n"))
@@ -86,8 +48,12 @@ void	ft_sort(t_stack *stacka, t_stack *stackb)
 	while (line)
 	{
 		ft_do(line, stacka, stackb);
+		free(line);
+		line = 0;
 		line = get_next_line(STDIN_FILENO);
 	}
+	free(line);
+	line = 0;
 }
 
 void	ft_recup(char **str, t_stack *stack)
@@ -100,6 +66,7 @@ void	ft_recup(char **str, t_stack *stack)
 	i--;
 	while (i >= 0)
 		ft_push(ft_lstnew(ft_atoi(str[i--])), stack);
+	free(str);
 }
 
 int	main(int argc, char **argv)
@@ -122,5 +89,9 @@ int	main(int argc, char **argv)
 		return (0);
 	ft_sort(&stacka, &stackb);
 	if (ft_verif(&stacka) && stackb.size == 0)
-		write(1, "OK\n", 2);
+		write(1, "OK\n", 3);
+	else
+		write(1, "KO\n", 3);
+	ft_lstclear(&stackb);
+	ft_lstclear(&stacka);
 }
