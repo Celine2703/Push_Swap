@@ -51,12 +51,14 @@ void	ft_sort_few(t_stack	*stacka)
 
 	stackb.head = 0;
 	stackb.size = 0;
-	while (stacka ->size > 3)
+	while (stacka ->size > 3 && !ft_verif(stacka))
 	{
 		ft_rotate(stacka);
-		ft_p(stacka, &stackb, 'b');
+		if (!ft_verif(stacka))
+			ft_p(stacka, &stackb, 'b');
 	}
-	ft_sort_three(stacka);
+	if (stacka ->size <= 3)
+		ft_sort_three(stacka);
 	while (stackb.size)
 		ft_p(&stackb, stacka, 'a');
 	ft_lstclear(&stackb);

@@ -31,18 +31,14 @@ int	ft_atoi(const char *str)
 
 	nb = 0;
 	i = 0;
-	while (str[i] != 0)
+	sign = ft_signe((char *)str, &i, 1);
+	while (str[i] == '0')
+		i++;
+	while (str[i] >= '0' && str[i] <= '9')
 	{
-		sign = ft_signe((char *)str, &i, 1);
-		while (str[i] == '0')
-			i++;
-		while (str[i] >= '0' && str[i] <= '9')
-		{
-			nb *= 10;
-			nb += (str[i] - '0');
-			i++;
-		}
-		return (sign * nb);
+		nb *= 10;
+		nb += (str[i] - '0');
+		i++;
 	}
-	return (0);
+	return (sign * nb);
 }

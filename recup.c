@@ -10,11 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-/*In case of error, it must display "Error" 
-followed by a ’\n’ on the standard error.
-Errors include for example: some arguments 
-aren’t integers, some arguments are
-bigger than an integer and/or there are duplicates*/
+/*some arguments are
+bigger than an integer */
 
 #include "push.h"
 
@@ -44,7 +41,8 @@ void	ft_recup(char **str, t_stack *stack)
 	i--;
 	while (i >= 0)
 	{
-		if (ft_dup(stack, str[i]))
+		if (ft_dup(stack, str[i]) || ft_char(str[i], stack)
+			|| ft_int(str[i], stack))
 			return ;
 		ft_push(ft_lstnew(ft_atoi(str[i--])), stack);
 	}
@@ -65,7 +63,8 @@ int	main(int argc, char **argv)
 	{
 		while (argc-- > 1)
 		{
-			if (ft_dup(&stack, argv[argc]))
+			if (ft_dup(&stack, argv[argc]) || ft_char(argv[argc], &stack)
+				|| ft_int(argv[argc], &stack))
 				break ;
 			ft_push(ft_lstnew(ft_atoi(argv[argc])), &stack);
 		}
@@ -77,5 +76,3 @@ int	main(int argc, char **argv)
 		ft_sort(&stack);
 	ft_lstclear(&stack);
 }
-
-//write(2, "Error\n", 6);
