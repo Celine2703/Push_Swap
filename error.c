@@ -1,48 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   error.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cmartin- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/08 16:40:52 by cmartin-          #+#    #+#             */
-/*   Updated: 2022/02/08 21:52:55 by cmartin-         ###   ########.fr       */
+/*   Created: 2022/07/14 11:44:45 by cmartin-          #+#    #+#             */
+/*   Updated: 2022/07/14 11:44:47 by cmartin-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push.h"
 
-static int	ft_signe(char *str, int *i, int sign)
+int	ft_dup(t_stack *stack, char *str)
 {
-	if ((str[*i] == '-') || (str[*i] == '+'))
+	t_list	*list;
+	int	content;
+
+	if (!str || !(str[0]))
 	{
-		if (str[*i] == '-')
-			sign = -1;
-		*i = (*i) + 1;
+		write(2, "Error\n", 6);
+		ft_lstclear(stack);
+		return (1);
 	}
-	return (sign);
-}
-
-int	ft_atoi(const char *str)
-{
-	int	i;
-	int	nb;
-	int	sign;
-
-	nb = 0;
-	i = 0;
-	while (str[i] != 0)
+	list = stack ->head;
+	content = ft_atoi(str);
+	while (list)
 	{
-		sign = ft_signe((char *)str, &i, 1);
-		while (str[i] == '0')
-			i++;
-		while (str[i] >= '0' && str[i] <= '9')
+		if (list ->content == content)
 		{
-			nb *= 10;
-			nb += (str[i] - '0');
-			i++;
+			write(2, "Error\n", 6);
+			ft_lstclear(stack);
+			return (1);
 		}
-		return (sign * nb);
+		list = list ->next;
 	}
 	return (0);
 }

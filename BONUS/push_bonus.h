@@ -45,6 +45,7 @@ char	*ft_read(char **str, int fd);
 char	*get_next_line(int fd);
 
 int		ft_strcmp(const char *s1, const char *s2);
+void	ft_strclear(char **str);
 t_list	*ft_lstnew(int content);
 void	ft_lstclear(t_stack *stack);
 int		ft_verif(t_stack *stack);

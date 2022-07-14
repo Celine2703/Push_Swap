@@ -59,6 +59,7 @@ void	ft_sort_few(t_stack	*stacka)
 	ft_sort_three(stacka);
 	while (stackb.size)
 		ft_p(&stackb, stacka, 'a');
+	ft_lstclear(&stackb);
 }	
 
 void	ft_sort_many(t_stack *stacka)
@@ -75,16 +76,4 @@ void	ft_sort_many(t_stack *stacka)
 		ft_insert(stacka, &stackb, ft_pick(&stackb));
 	}
 	ft_rotate(stacka);
-}
-
-void	ft_recup(char **str, t_stack *stack)
-{
-	int	i;
-	
-	i = 0;
-	while (str[i])
-		i++;
-	i--;
-	while (i >= 0)
-		ft_push(ft_lstnew(ft_atoi(str[i--])), stack);
 }

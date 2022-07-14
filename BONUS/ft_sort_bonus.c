@@ -66,7 +66,7 @@ void	ft_recup(char **str, t_stack *stack)
 	i--;
 	while (i >= 0)
 		ft_push(ft_lstnew(ft_atoi(str[i--])), stack);
-	free(str);
+	ft_strclear(str);
 }
 
 int	main(int argc, char **argv)

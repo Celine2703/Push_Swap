@@ -22,6 +22,17 @@ int	ft_strcmp(const char *s1, const char *s2)
 	return ((unsigned char)s1[i] - (unsigned char)s2[i]);
 }
 
+void	ft_strclear(char **str)
+{
+	int	i;
+
+	i = 0;
+	while (str[i])
+		free(str[i++]);
+	free(str);
+	str = 0;
+}
+
 t_list	*ft_lstnew(int content)
 {
 	t_list	*elem;
