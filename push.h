@@ -46,11 +46,15 @@ typedef struct s_stack
 void	ft_putchar_fd(char c, int fd);
 void	ft_putnbr_fd(int n, int fd);
 t_list	*ft_lstnew(int content);
+void	ft_lstclear(t_stack *stack);
 int		ft_verif(t_stack *stack);
 
 int		ft_atoi(const char *str);
 
 char	**ft_split(char const *str, char const c);
+
+//error
+int	ft_dup(t_stack *stack, char *str);
 
 //operations
 void	ft_push(t_list *new, t_stack *stack);
@@ -89,8 +93,9 @@ void	ft_sort(t_stack *stack);
 void	ft_sort_three(t_stack *stack);
 void	ft_sort_few(t_stack	*stack);
 void	ft_sort_many(t_stack *stack);
+
+//recup
+void	ft_strclear(char **str);
 void	ft_recup(char **str, t_stack *stack);
 
-void	ft_affiche(t_stack *stack);
-void	ft_affiche_mov(t_list	*list);
 #endif
