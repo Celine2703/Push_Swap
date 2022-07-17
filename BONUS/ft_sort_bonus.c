@@ -38,21 +38,26 @@ void	ft_do(char *str, t_stack *stacka, t_stack *stackb)
 		ft_reverse(stackb);
 	else if (!ft_strcmp(str, "rrr\n"))
 		ft_rrr(stacka, stackb);
+	else
+		return (ft_instruction(stacka, stackb));
 }
 
 void	ft_sort(t_stack *stacka, t_stack *stackb)
 {
 	char	*line;
 
+	if (stacka ->size < 1)
+		return ;
 	line = get_next_line(STDIN_FILENO);
-	while (line)
+	while (line && stacka)
 	{
 		ft_do(line, stacka, stackb);
 		free(line);
 		line = 0;
 		line = get_next_line(STDIN_FILENO);
 	}
-	free(line);
+	if (line)
+		free(line);
 	line = 0;
 }
 
@@ -60,12 +65,22 @@ void	ft_recup(char **str, t_stack *stack)
 {
 	int	i;
 
+	if (!str || !(*str) || !(**str))
+	{
+		write(2, "Error\n", 6);
+		return ;
+	}
 	i = 0;
 	while (str[i])
 		i++;
 	i--;
 	while (i >= 0)
+	{
+		if (ft_dup(stack, str[i]) || ft_char(str[i], stack)
+			|| ft_int(str[i], stack))
+			return ;
 		ft_push(ft_lstnew(ft_atoi(str[i--])), stack);
+	}
 	ft_strclear(str);
 }
 
@@ -84,10 +99,15 @@ int	main(int argc, char **argv)
 		ft_recup(ft_split(argv[1], ' '), &stacka);
 	else
 		while (argc-- > 1)
+		{
+			if (ft_dup(&stacka, argv[argc]) || ft_char(argv[argc], &stacka)
+				|| ft_int(argv[argc], &stacka))
+				return (0) ;
 			ft_push(ft_lstnew(ft_atoi(argv[argc])), &stacka);
+		}
+	ft_sort(&stacka, &stackb);
 	if (stacka.size < 1)
 		return (0);
-	ft_sort(&stacka, &stackb);
 	if (ft_verif(&stacka) && stackb.size == 0)
 		write(1, "OK\n", 3);
 	else

@@ -12,14 +12,11 @@
 
 #include "push_bonus.h"
 
-int	ft_strcmp(const char *s1, const char *s2)
+void	ft_instruction(t_stack *stacka, t_stack *stackb)
 {
-	size_t	i;
-
-	i = 0;
-	while (s1[i] != '\0' && s1[i] == s2[i])
-		i++;
-	return ((unsigned char)s1[i] - (unsigned char)s2[i]);
+	write(2, "Error\n", 6);
+	ft_lstclear(stacka);
+	ft_lstclear(stackb);
 }
 
 char	*ft_trans(char *str)
