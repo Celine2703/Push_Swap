@@ -65,8 +65,6 @@ int	ft_verif(t_stack *stack)
 {
 	t_list	*list;
 
-	if (!stack || stack ->size < 1)
-		return (0);
 	list = stack ->head;
 	while (list && list ->next)
 	{

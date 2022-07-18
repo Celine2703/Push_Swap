@@ -37,12 +37,8 @@ int	ft_do(char *str, t_stack *stacka, t_stack *stackb)
 	else if (!ft_strcmp(str, "rrr\n"))
 		ft_rrr(stacka, stackb);
 	else
-<<<<<<< HEAD
 		return (1);
 	return (0);
-=======
-		return (ft_instruction(stacka, stackb));
->>>>>>> 8617942d2527ba0232945c06fa56e893a1a85d81
 }
 
 int	ft_sort(t_stack *stacka, t_stack *stackb)
@@ -50,15 +46,9 @@ int	ft_sort(t_stack *stacka, t_stack *stackb)
 	char	*line;
 	int	error;
 
-	if (stacka ->size < 1)
-		return ;
 	line = get_next_line(STDIN_FILENO);
-<<<<<<< HEAD
 	error = 0;
 	while (!error && line)
-=======
-	while (line && stacka)
->>>>>>> 8617942d2527ba0232945c06fa56e893a1a85d81
 	{
 		error = ft_do(line, stacka, stackb);
 		free(line);
@@ -67,8 +57,7 @@ int	ft_sort(t_stack *stacka, t_stack *stackb)
 			return (1);
 		line = get_next_line(STDIN_FILENO);
 	}
-	if (line)
-		free(line);
+	free(line);
 	line = 0;
 	return (0);
 }
@@ -80,11 +69,7 @@ int	ft_recup(char **str, t_stack *stack)
 	if (!str || !(*str) || !(**str))
 	{
 		write(2, "Error\n", 6);
-<<<<<<< HEAD
 		return (1);
-=======
-		return ;
->>>>>>> 8617942d2527ba0232945c06fa56e893a1a85d81
 	}
 	i = 0;
 	while (str[i])
@@ -94,11 +79,7 @@ int	ft_recup(char **str, t_stack *stack)
 	{
 		if (ft_dup(stack, str[i]) || ft_char(str[i], stack)
 			|| ft_int(str[i], stack))
-<<<<<<< HEAD
 			return (1);
-=======
-			return ;
->>>>>>> 8617942d2527ba0232945c06fa56e893a1a85d81
 		ft_push(ft_lstnew(ft_atoi(str[i--])), stack);
 	}
 	ft_strclear(str);
@@ -133,7 +114,6 @@ int	main(int argc, char **argv)
 	else if (argc == 2)
 		error = ft_recup(ft_split(argv[1], ' '), &stacka);
 	else
-<<<<<<< HEAD
 		error = ft_recup_bis(argv, argc, &stacka);
 	if (error || stacka.size < 1)
 		return (0);
@@ -141,19 +121,6 @@ int	main(int argc, char **argv)
 	if (error)
 		write(2, "Error\n", 6);
 	else if (ft_verif(&stacka) && stackb.size == 0)
-=======
-		while (argc-- > 1)
-		{
-			if (ft_dup(&stacka, argv[argc]) || ft_char(argv[argc], &stacka)
-				|| ft_int(argv[argc], &stacka))
-				return (0) ;
-			ft_push(ft_lstnew(ft_atoi(argv[argc])), &stacka);
-		}
-	ft_sort(&stacka, &stackb);
-	if (stacka.size < 1)
-		return (0);
-	if (ft_verif(&stacka) && stackb.size == 0)
->>>>>>> 8617942d2527ba0232945c06fa56e893a1a85d81
 		write(1, "OK\n", 3);
 	else
 		write(1, "KO\n", 3);
