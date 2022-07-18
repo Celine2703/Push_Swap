@@ -57,7 +57,10 @@ char	*ft_itoa(int n);
 char	**ft_split(char const *str, char const c);
 
 //error
+<<<<<<< HEAD
+=======
 void	ft_instruction(t_stack *stacka, t_stack *stackb);
+>>>>>>> 8617942d2527ba0232945c06fa56e893a1a85d81
 char	*ft_trans(char *str);
 int		ft_dup(t_stack *stack, char *str);
 int		ft_char(char *str, t_stack *stack);
@@ -76,8 +79,9 @@ void	ft_reverse(t_stack *stack);
 void	ft_rrr(t_stack *stack_a, t_stack *stack_b);
 
 //sort
-void	ft_do(char *str, t_stack *stacka, t_stack *stackb);
-void	ft_sort(t_stack *stacka, t_stack *stackb);
-void	ft_recup(char **str, t_stack *stack);
+int	ft_do(char *str, t_stack *stacka, t_stack *stackb);
+int	ft_sort(t_stack *stacka, t_stack *stackb);
+int		ft_recup(char **str, t_stack *stack);
+int		ft_recup_bis(char	**argv, int argc, t_stack *stack);
 
 #endif

@@ -12,6 +12,8 @@
 
 #include "push_bonus.h"
 
+<<<<<<< HEAD
+=======
 void	ft_instruction(t_stack *stacka, t_stack *stackb)
 {
 	write(2, "Error\n", 6);
@@ -19,6 +21,7 @@ void	ft_instruction(t_stack *stacka, t_stack *stackb)
 	ft_lstclear(stackb);
 }
 
+>>>>>>> 8617942d2527ba0232945c06fa56e893a1a85d81
 char	*ft_trans(char *str)
 {
 	char	*new;
