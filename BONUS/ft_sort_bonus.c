@@ -44,7 +44,7 @@ int	ft_do(char *str, t_stack *stacka, t_stack *stackb)
 int	ft_sort(t_stack *stacka, t_stack *stackb)
 {
 	char	*line;
-	int	error;
+	int		error;
 
 	line = get_next_line(STDIN_FILENO);
 	error = 0;
@@ -79,14 +79,14 @@ int	ft_recup(char **str, t_stack *stack)
 	{
 		if (ft_dup(stack, str[i]) || ft_char(str[i], stack)
 			|| ft_int(str[i], stack))
-			return (1);
+			return (ft_strclear(str), 1);
 		ft_push(ft_lstnew(ft_atoi(str[i--])), stack);
 	}
 	ft_strclear(str);
 	return (0);
 }
 
-int	ft_recup_bis(char	**argv, int argc, t_stack *stack)
+int	ft_recup_bis(char **argv, int argc, t_stack *stack)
 {
 	while (argc-- > 1)
 	{
@@ -104,10 +104,8 @@ int	main(int argc, char **argv)
 	t_stack	stackb;
 	int		error;
 
-	stacka.head = 0;
-	stacka.size = 0;
-	stackb.head = 0;
-	stackb.size = 0;
+	ft_stack_init(&stacka);
+	ft_stack_init(&stackb);
 	error = 0;
 	if (argc <= 1)
 		return (0);

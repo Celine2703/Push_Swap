@@ -49,7 +49,7 @@ void	ft_init_mov(t_mov *elem)
 
 void	ft_mov_b(t_stack *stack, t_list *elem, size_t pos)
 {
-	if (pos > (stack ->size) / 2)
+	if (pos >= (stack ->size) / 2)
 		elem ->mov.rrb = (stack ->size) - pos;
 	else
 		elem ->mov.rb = pos;

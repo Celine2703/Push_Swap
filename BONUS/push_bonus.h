@@ -61,6 +61,7 @@ char	*ft_trans(char *str);
 int		ft_dup(t_stack *stack, char *str);
 int		ft_char(char *str, t_stack *stack);
 int		ft_int(char *str, t_stack *stack);
+void	ft_stack_init(t_stack *stack);
 
 //operations
 void	ft_push(t_list *new, t_stack *stack);
@@ -75,8 +76,8 @@ void	ft_reverse(t_stack *stack);
 void	ft_rrr(t_stack *stack_a, t_stack *stack_b);
 
 //sort
-int	ft_do(char *str, t_stack *stacka, t_stack *stackb);
-int	ft_sort(t_stack *stacka, t_stack *stackb);
+int		ft_do(char *str, t_stack *stacka, t_stack *stackb);
+int		ft_sort(t_stack *stacka, t_stack *stackb);
 int		ft_recup(char **str, t_stack *stack);
 int		ft_recup_bis(char	**argv, int argc, t_stack *stack);
 

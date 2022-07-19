@@ -53,5 +53,7 @@ void	ft_ss(t_stack *stack_a, t_stack *stack_b)
 
 void	ft_p(t_stack *stack1, t_stack *stack2)
 {
+	if (stack1 ->size < 1)
+		return ;
 	ft_push(ft_pop(stack1), stack2);
 }

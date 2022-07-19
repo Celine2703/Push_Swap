@@ -111,3 +111,9 @@ int	ft_int(char *str, t_stack *stack)
 	free(itoa);
 	return (0);
 }
+
+void	ft_stack_init(t_stack *stack)
+{
+	stack ->head = 0;
+	stack ->size = 0;
+}

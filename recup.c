@@ -20,6 +20,8 @@ void	ft_strclear(char **str)
 	int	i;
 
 	i = 0;
+	if (!str)
+		return ;
 	while (str[i])
 		free(str[i++]);
 	free(str);
@@ -43,7 +45,10 @@ void	ft_recup(char **str, t_stack *stack)
 	{
 		if (ft_dup(stack, str[i]) || ft_char(str[i], stack)
 			|| ft_int(str[i], stack))
+		{
+			ft_strclear(str);
 			return ;
+		}
 		ft_push(ft_lstnew(ft_atoi(str[i--])), stack);
 	}
 	ft_strclear(str);
@@ -70,7 +75,7 @@ int	main(int argc, char **argv)
 		}
 	}
 	if (stack.size <= 1)
-		return (0);
+		return (ft_lstclear(&stack), 0);
 	ft_put_pos(&stack);
 	if (!ft_verif(&stack))
 		ft_sort(&stack);
