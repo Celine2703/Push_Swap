@@ -68,7 +68,11 @@ execute them on the stack received as an argument.
 If the instructions are correct, it must display "OK". If not, it must display "KO".
 
 how to run the checker program :
+
 	make bonus
+	
 	./checker " list of integers " (with or whithout quotes)
+	
 you can also run both programs :
+
 	./push_swap " list of integers " | ./checker " same list of integers "
