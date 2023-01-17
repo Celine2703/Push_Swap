@@ -1,4 +1,4 @@
-PUSH_SWAP
+PUSH_SWAP 42
 
 Summary:
 This project will make you sort data on a stack, with a limited set of instructions, using
